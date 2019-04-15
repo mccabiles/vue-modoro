@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
     stopTimer(state) {
       clearInterval(state.timer);
-      state.active = false;
+      state.timerActive = false;
       state.timer = null;
     },
 
@@ -30,7 +30,7 @@ export default new Vuex.Store({
       state.timerRemaining -= duration;
       if (state.timerRemaining <= 0) {
         clearInterval(state.timer);
-        state.active = false;
+        state.timerActive = false;
         state.timer = null;
       }
     },
@@ -38,13 +38,14 @@ export default new Vuex.Store({
     startTimer(state, timer) {
       if (state.timer) clearInterval(state.timer);
       state.timer = timer;
-      state.active = true;
+      state.timerActive = true;
     }
   },
 
   actions: {
     toggleTimer({ state, commit }) {
-      if (state.active) return commit("stopTimer");
+      if (state.timerRemaining <= 0) return;
+      if (state.timerActive) return commit("stopTimer");
       const timer = setInterval(() => commit("deductTime", 1000), 1000);
       commit("startTimer", timer);
     }
