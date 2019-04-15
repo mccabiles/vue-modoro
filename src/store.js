@@ -3,6 +3,16 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+const timestamp = val => {
+  const minutes = Math.floor(val / 60000)
+    .toString()
+    .padStart(2, "0");
+  const seconds = ((val / 1000) % 60).toString().padStart(2, "0");
+  return `${minutes}:${seconds}`;
+};
+
+const DEFAULT_TITLE = "Vue-modoro";
+
 export default new Vuex.Store({
   state: {
     timerActive: false,
@@ -24,15 +34,20 @@ export default new Vuex.Store({
       clearInterval(state.timer);
       state.timerActive = false;
       state.timer = null;
+      document.title = DEFAULT_TITLE;
     },
 
     deductTime(state, duration) {
-      state.timerRemaining -= duration;
       if (state.timerRemaining <= 0) {
         clearInterval(state.timer);
         state.timerActive = false;
         state.timer = null;
+        document.title = DEFAULT_TITLE;
+        return;
       }
+
+      state.timerRemaining -= duration;
+      document.title = timestamp(state.timerRemaining);
     },
 
     startTimer(state, timer) {
