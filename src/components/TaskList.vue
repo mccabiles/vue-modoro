@@ -22,7 +22,7 @@
         :to="{ name: 'view', params: { id }}"
       >
         <span>{{ task.title }}</span>
-        <span class="panel-button">
+        <span v-if="!$store.state.timerActive" class="panel-button">
           <button class="button" @click.stop="$emit('on:delete', task)">Delete</button>
         </span>
       </router-link>
@@ -40,7 +40,7 @@ export default {
     },
     value: String
   },
-
+  
   data() {
     return {
       tasksData: {}
