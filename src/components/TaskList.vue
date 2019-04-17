@@ -13,12 +13,19 @@
       <p style="margin-left: auto; margin-right: auto;">No tasks yet.</p>
     </div>
     <template v-else>
-      <a class="panel-block" v-for="(task, id) in tasksData" :key="id">
+      <router-link
+        tag="a"
+        class="panel-block" 
+        active-class="is-active" 
+        v-for="(task, id) in tasksData"
+        :key="id"
+        :to="{ name: 'view', params: { id }}"
+      >
         <span>{{ task.title }}</span>
         <span class="panel-button">
           <button class="button" @click.stop="$emit('on:delete', task)">Delete</button>
         </span>
-      </a>
+      </router-link>
     </template>
   </nav>
 </template>
