@@ -11,9 +11,9 @@ const timestamp = val => {
   return `${minutes}:${seconds}`;
 };
 
-const TIME_WORK = 1000 * 60 * 0.1;
-const TIME_BREAK_SHORT = 1000 * 60 * 0.2;
-const TIME_BREAK_LONG = 1000 * 60 * 0.3;
+const TIME_WORK = 1000 * 60 * 25;
+const TIME_BREAK_SHORT = 1000 * 60 * 5;
+const TIME_BREAK_LONG = 1000 * 60 * 30;
 const DEFAULT_TITLE = "Vue-modoro";
 const TIMER_TYPE_WORK = 1;
 const TIMER_TYPE_BREAK_SHORT = 2;
