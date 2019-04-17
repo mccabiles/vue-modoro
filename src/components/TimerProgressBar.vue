@@ -7,9 +7,14 @@
 
 <script>
 export default {
-  props: {
-    timeMax: [Number, String],
-    timeCurr: [Number, String]
+  computed: {
+    timeMax () {
+      return this.$store.state.timerMax;
+    },
+
+    timeCurr () {
+      return this.$store.state.timerRemaining;
+    }
   },
 
   filters: {
