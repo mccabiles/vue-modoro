@@ -113,6 +113,6 @@ export default new Vuex.Store({
       commit("setTimerMax", TIME_BREAK_LONG);
       commit("setTimerRemaining", TIME_BREAK_LONG);
       commit("setTimerType", TIMER_TYPE_BREAK_LONG);
-    },
+    }
   }
 });

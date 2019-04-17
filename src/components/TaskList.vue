@@ -9,21 +9,26 @@
         @keydown.enter="$emit('on:save')"
       />
     </div>
-    <div v-if="Object.keys(tasks).length == 0" class="has-text-grey panel-block">
+    <div
+      v-if="Object.keys(tasks).length == 0"
+      class="has-text-grey panel-block"
+    >
       <p style="margin-left: auto; margin-right: auto;">No tasks yet.</p>
     </div>
     <template v-else>
       <router-link
         tag="a"
-        class="panel-block" 
-        active-class="is-active" 
+        class="panel-block"
+        active-class="is-active"
         v-for="(task, id) in tasksData"
         :key="id"
-        :to="{ name: 'view', params: { id }}"
+        :to="{ name: 'view', params: { id } }"
       >
         <span>{{ task.title }}</span>
         <span v-if="!$store.state.timerActive" class="panel-button">
-          <button class="button" @click.stop="$emit('on:delete', task)">Delete</button>
+          <button class="button" @click.stop="$emit('on:delete', task)">
+            Delete
+          </button>
         </span>
       </router-link>
     </template>
@@ -40,7 +45,7 @@ export default {
     },
     value: String
   },
-  
+
   data() {
     return {
       tasksData: {}
@@ -52,7 +57,7 @@ export default {
       deep: true,
       immediate: true,
       handler(tasks) {
-        this.tasksData = Object.assign({}, tasks); 
+        this.tasksData = Object.assign({}, tasks);
       }
     }
   }
@@ -60,7 +65,7 @@ export default {
 </script>
 
 <style scoped>
-  .panel-button {
-    margin-left: auto;
-  }
+.panel-button {
+  margin-left: auto;
+}
 </style>
