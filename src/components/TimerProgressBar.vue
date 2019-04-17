@@ -1,6 +1,6 @@
 <template>
   <div>
-    <progress class="progress" :max="timeMax" :value="timeCurr"></progress>
+    <progress class="progress" :class="progressVariant" :max="timeMax" :value="timeCurr"></progress>
     <p class="has-text-centered"> {{ timeCurr | timestamp }} </p>
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
 
     timeCurr () {
       return this.$store.state.timerRemaining;
+    },
+
+    progressVariant() {
+      if (this.$store.state.timerType == 1) return "is-primary";
+      return "is-success"
     }
   },
 
