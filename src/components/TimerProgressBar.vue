@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <progress class="progress" :max="timeMax" :value="timeCurr"></progress>
     <p class="has-text-centered"> {{ timeCurr | timestamp }} </p>
   </div>
