@@ -6,6 +6,9 @@ $secondary: #41ad43;
 $link: #ffffff;
 $panel-heading-color: findColorInvert($primary-lighten);
 $panel-heading-background-color: $primary-lighten;
+$panel-block-active-border-left-color: $primary;
+$panel-block-active-color: $primary;
+
 $input-focus-border-color: $primary;
 
 @import "../../node_modules/bulma/bulma.sass";
