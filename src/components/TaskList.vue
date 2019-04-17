@@ -13,8 +13,11 @@
       <p>No tasks yet.</p>
     </div>
     <template v-else>
-      <a class="panel-block" v-for="(task, id) in tasks" :key="id">
-        {{ task.title }}
+      <a class="panel-block" v-for="(task, id) in tasksData" :key="id">
+        <span>{{ task.title }}</span>
+        <span class="panel-button">
+          <button class="button" @click.stop="$emit('on:delete', task)">Delete</button>
+        </span>
       </a>
     </template>
   </nav>
@@ -29,6 +32,28 @@ export default {
       default: () => ({})
     },
     value: String
+  },
+
+  data() {
+    return {
+      tasksData: {}
+    };
+  },
+
+  watch: {
+    tasks: {
+      deep: true,
+      immediate: true,
+      handler(tasks) {
+        this.tasksData = Object.assign({}, tasks); 
+      }
+    }
   }
 };
 </script>
+
+<style scoped>
+  .panel-button {
+    margin-left: auto;
+  }
+</style>
