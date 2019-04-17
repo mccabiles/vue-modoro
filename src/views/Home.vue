@@ -5,6 +5,7 @@
         <task-list
           :tasks="tasks"
           v-model="newTask" 
+          @on:view="viewTask"
           @on:save="createTask"
           @on:delete="deleteTask"
         />
@@ -51,6 +52,10 @@ export default {
     deleteTask(task) {
       Task.delete(task.id);
       this.getTasks();
+    },
+
+    viewTask(task) {
+      this.$router.push({ name: 'view', params: { id: task.id }});
     }
   }
 };
