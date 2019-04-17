@@ -21,11 +21,16 @@ export default {
     id: [Number, String]
   },
 
+  computed: {
+    task() { return this.$store.state.activeTask; }
+  },
+
   watch: {
     id: {
       immediate: true,
       handler() {
-        this.task = Task.getTask(this.id);
+        const task = Task.getTask(this.id);
+        this.$store.commit('setActiveTask', task);
       }
     }
   },
@@ -36,12 +41,6 @@ export default {
 
   beforeRouteLeave(to, from, next) {
     this.confirmNavigation(next);
-  },
-
-  data() {
-    return {
-      task: new Task('')
-    };
   },
 
   methods: {
