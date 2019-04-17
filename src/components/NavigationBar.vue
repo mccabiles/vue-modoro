@@ -1,11 +1,24 @@
 <template>
-  <nav class="navbar is-primary">
+  <nav class="navbar is-primary" role="navigation">
     <div class="navbar-brand">
       <a class="navbar-item is-size-5">
         Vue-modoro
       </a>
+      <a
+        role="button"
+        class="navbar-burger burger"
+        @click="showMenu = !showMenu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <div class="navbar-menu">
+
+    <div
+      class="navbar-menu has-background-primary"
+      :class="showMenu ? 'is-active' : ''"
+    >
       <div class="navbar-end">
         <router-link
           v-for="link in links"
@@ -26,9 +39,10 @@
 export default {
   data() {
     return {
+      showMenu: false,
       links: [
-        { text: "Home", to: { name: "home" } },
-        { text: "About", to: { name: "about" }}
+        { text: "Tasks", to: { name: "home" } },
+        { text: "About", to: { name: "about" } }
       ]
     };
   }
