@@ -2,8 +2,9 @@
   <div class="has-text-centered">
     <button v-if="$store.state.timerRemaining > 0" class="button" @click="toggleTimer">
       {{ timerActive ? 'Pause' : 'Start' }}
+      {{ isTimerWork ? '' : 'Break' }}
     </button>
-    <button v-if="timerActive" class="button" @click="resetTimer">Stop</button>
+    <button class="button" @click="resetTimer">Stop</button>
     <p> {{ timerType }} </p>
     <p> Round {{ round }} </p>
   </div>
@@ -15,7 +16,8 @@ export default {
   computed: {
     timerActive() { return this.$store.state.timerActive; },
     timerType() { return this.$store.state.timerType; },
-    round() { return this.$store.state.round; }
+    round() { return this.$store.state.round; },
+    isTimerWork() { return this.$store.state.timerType == 1; }
   },
 
   methods: {
