@@ -15,6 +15,7 @@ const DEFAULT_TITLE = "Vue-modoro";
 
 export default new Vuex.Store({
   state: {
+    round: 0,
     timerActive: false,
     timerMax: 5000,
     timerRemaining: 5000,
