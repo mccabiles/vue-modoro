@@ -9,8 +9,8 @@
         @keydown.enter="$emit('on:save')"
       />
     </div>
-    <div v-if="Object.keys(tasks).length == 0" class="has-text-centered panel-block">
-      <p>No tasks yet.</p>
+    <div v-if="Object.keys(tasks).length == 0" class="has-text-grey panel-block">
+      <p style="margin-left: auto; margin-right: auto;">No tasks yet.</p>
     </div>
     <template v-else>
       <a class="panel-block" v-for="(task, id) in tasksData" :key="id">
