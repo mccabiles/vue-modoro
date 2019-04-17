@@ -1,5 +1,5 @@
 export default class Task {
-  constructor (title) {
+  constructor(title) {
     this.title = title;
     this.id = new Date().getTime();
   }
@@ -23,9 +23,9 @@ export default class Task {
     localStorage.setItem("tasks", stringified);
   }
 
-  delete() {
+  static delete(id) {
     let tasks = Task.getAllTasks();
-    delete tasks[this.id];
+    delete tasks[id];
     Task.saveTasks(tasks);
   }
 }
