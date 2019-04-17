@@ -28,4 +28,9 @@ export default class Task {
     delete tasks[id];
     Task.saveTasks(tasks);
   }
+
+  static getTask(id) {
+    let tasks = Task.getAllTasks();
+    return tasks[id];
+  }
 }
