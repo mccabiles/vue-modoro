@@ -15,6 +15,7 @@ const DEFAULT_TITLE = "Vue-modoro";
 
 export default new Vuex.Store({
   state: {
+    activeTask: null,
     round: 0,
     timerActive: false,
     timerMax: 5000,
@@ -23,6 +24,10 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setActiveTask(state, task) {
+      state.activeTask = task;
+    },
+
     setTimerMax(state, timerMax) {
       state.timerMax = timerMax;
     },
